@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700" rel="stylesheet">
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<link rel="stylesheet" href="/vendor/makerstrap.min.css">
+<title>Webmaker Archiver</title>
+<div class="container">
+  <h1>Webmaker Archiver</h1>
+  <p>Just give us the name of a <a href="https://webmaker.org/">Webmaker</a> user and we'll give you a ZIP archive of all their Thimble makes.</p>
+  <form class="form" id="form">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="username" id="username">
+    </div>
+    <button type="submit" class="btn btn-primary"><i class="fa fa-download"></i> Download ZIP</button>
+  </form>
+</div>
+<script>
+var form = document.getElementById('form');
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  var username = document.getElementById('username').value;
+  if (!/^[A-Za-z0-9_\-]+$/.test(username))
+    return alert("Invalid username.");
+  window.location = '/user/' + username + '.zip';
+});
+</script>
